@@ -17,7 +17,8 @@ class Index:
 class Hello:
     def POST(self):
         req_data = json.loads(web.data())
-        return 'Hello, {0}'.format(req_data['user_name'])
+        res = {'text':'Hello, {0}'.format(req_data['user_name'])}
+        return json.dumps(res)
 
 if __name__ == "__main__": 
     app = web.application(urls, globals())
