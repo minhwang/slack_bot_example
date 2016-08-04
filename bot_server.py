@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 import web
 import json
+import requests
 
 urls = (
     '/', 'Index',
@@ -17,9 +18,8 @@ class Index:
 class Hello:
     def POST(self):
         req_data = json.loads(web.data())
-        res = {'text':'Hello, {0}'.format(req_data['user_name'])}
-        web.header('Content-Type', 'application/json')
-        return json.dumps(res)
+        requests.post(req_data['response_url'], json={'text':'Hello, {0}'.format(req_data['user_name'])})
+        pass
 
 if __name__ == "__main__": 
     app = web.application(urls, globals())
