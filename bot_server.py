@@ -18,6 +18,7 @@ class Hello:
     def POST(self):
         req_data = json.loads(web.data())
         res = {'text':'Hello, {0}'.format(req_data['user_name'])}
+        web.header('Content-Type', 'application/json')
         return json.dumps(res)
 
 if __name__ == "__main__": 
