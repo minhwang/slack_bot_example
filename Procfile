@@ -1,1 +1,1 @@
-web: python bot_server.py 9999
+web: python bot_server.py
