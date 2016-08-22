@@ -49,23 +49,22 @@ class Bob:
             'text': 'ttt',
             'attachments': [
                 {
-                    'text': 'aaaaa',
+                    'text': '밥 먹으러 갈래?',
                     'fallback': 'fallback',
                     'callback_id': 'callback_id',
                     'color': '#3AA3E3',
                     'attachment_type': 'default',
                     'actions': [
                         {
-                            'name': 'eeee',
-                            'text': 'Eeee',
+                            'name': 'Join',
+                            'text': '당근 가야지~',
                             'type': 'button',
-                            'value': 'dddd'
+                            'value': 'join'
                         }
                     ]
                 }
             ]
         }
-        res = {'text':'Hello, {0}'.format(req_data.user_name)}
         web.header('Content-Type', 'application/json')
         return json.dumps(a)
 
