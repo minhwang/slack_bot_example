@@ -5,7 +5,8 @@ import json
 
 urls = (
     '/', 'Index',
-    '/hello', 'Hello'
+    '/hello', 'Hello',
+    '/bob', 'Bob'
 )
 
 class Index:
@@ -15,6 +16,33 @@ class Index:
         return "Post"
 
 class Hello:
+    def POST(self):
+        req_data = web.input()
+        a = {
+            'text': 'ttt',
+            'attachments': [
+                {
+                    'text': 'aaaaa',
+                    'fallback': 'fallback',
+                    'callback_id': 'callback_id',
+                    'color': '#3AA3E3',
+                    'attachment_type': 'default',
+                    'actions': [
+                        {
+                            'name': 'eeee',
+                            'text': 'Eeee',
+                            'type': 'button',
+                            'value': 'dddd'
+                        }
+                    ]
+                }
+            ]
+        }
+        res = {'text':'Hello, {0}'.format(req_data.user_name)}
+        web.header('Content-Type', 'application/json')
+        return json.dumps(a)
+
+class Bob:
     def POST(self):
         req_data = web.input()
         a = {
