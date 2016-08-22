@@ -46,10 +46,10 @@ class Bob:
     def POST(self):
         req_data = web.input()
         a = {
-            'text': 'ttt',
+            'text': '생일 축하 파티',
             'attachments': [
                 {
-                    'text': '밥 먹으러 갈래?',
+                    'text': '생일축하합니다~ 밥 먹으러 갑시다~~',
                     'fallback': 'fallback',
                     'callback_id': 'callback_id',
                     'color': '#3AA3E3',
