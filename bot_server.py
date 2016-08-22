@@ -17,9 +17,29 @@ class Index:
 class Hello:
     def POST(self):
         req_data = web.input()
+        a = {
+            'text': 'ttt',
+            'attachments': [
+                {
+                    'text': 'aaaaa',
+                    'fallback': 'fallback',
+                    'callback_id': 'callback_id',
+                    'color': '#3AA3E3',
+                    'attachment_type': 'default',
+                    'actions': [
+                        {
+                            'name': 'eeee',
+                            'text': 'Eeee',
+                            'type': 'button',
+                            'value': 'dddd'
+                        }
+                    ]
+                }
+            ]
+        }
         res = {'text':'Hello, {0}'.format(req_data.user_name)}
         web.header('Content-Type', 'application/json')
-        return json.dumps(res)
+        return json.dumps(a)
 
 if __name__ == "__main__": 
     app = web.application(urls, globals())
