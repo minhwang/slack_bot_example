@@ -7,7 +7,7 @@ urls = (
     '/', 'Index',
     '/hello', 'Hello',
     '/bob', 'Bob',
-    '/yummy/action', 'YummyAction'
+    '/yummy', 'YummyAction'
 )
 
 class Index:
@@ -71,7 +71,7 @@ class Bob:
 
 class YummyAction:
     def POST(self):
-        
+
 if __name__ == "__main__": 
     app = web.application(urls, globals())
     app.run()
