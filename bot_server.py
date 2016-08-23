@@ -44,12 +44,15 @@ class Hello:
         return json.dumps(a)
 
 class Bob:
-    def parse_command_text(text):
-        s = text.split('|')
-        return (s[0].strip(), s[1].strip())
+    def parse_command_text(self, txt):
+        s = txt.split('|')
+        title = s[0].strip()
+        desc = '' if len(s) == 1 else s[1].strip()
+        return (title, desc)
 
     def POST(self):
         req_data = web.input()
+        print(req_data.text)
         (title, desc) = self.parse_command_text(req_data.text)
 
         a = {
