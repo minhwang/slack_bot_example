@@ -6,8 +6,7 @@ import json
 urls = (
     '/', 'Index',
     '/hello', 'Hello',
-    '/bob', 'Bob',
-    '/yummy', 'YummyAction'
+    '/bob', 'Bob'
 )
 
 class Index:
@@ -68,9 +67,6 @@ class Bob:
         }
         web.header('Content-Type', 'application/json')
         return json.dumps(a)
-
-class YummyAction:
-    def POST(self):
 
 if __name__ == "__main__": 
     app = web.application(urls, globals())
