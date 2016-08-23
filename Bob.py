@@ -2,52 +2,30 @@
 from __future__ import unicode_literals
 import web
 import json
-import Bob
 
-urls = (
-    '/', 'Index',
-    '/hello', 'Hello',
-    '/bob', 'Bob',
-    '/yummy/action', 'YummyAction'
-)
-
-class Index:
-    def GET(self):
-        return "Hello, world!"
-    def POST(self):
-        return "Post"
-
-class Hello:
+class Bob:
     def POST(self):
         req_data = web.input()
         a = {
-            'text': 'ttt',
+            'text': req_data.text,
             'attachments': [
                 {
-                    'text': 'aaaaa',
+                    'response_type': 'in_channel',
+                    'text': req_data.text,
                     'fallback': 'fallback',
                     'callback_id': 'callback_id',
                     'color': '#3AA3E3',
                     'attachment_type': 'default',
                     'actions': [
                         {
-                            'name': 'eeee',
-                            'text': 'Eeee',
+                            'name': 'Join',
+                            'text': 'JOIN',
                             'type': 'button',
-                            'value': 'dddd'
+                            'value': 'join'
                         }
                     ]
                 }
             ]
         }
-        res = {'text':'Hello, {0}'.format(req_data.user_name)}
         web.header('Content-Type', 'application/json')
         return json.dumps(a)
-
-class YummyAction:
-    def POST(self):
-        pass
-
-if __name__ == "__main__": 
-    app = web.application(urls, globals())
-    app.run()
