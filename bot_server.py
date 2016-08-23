@@ -50,6 +50,7 @@ class Bob:
             'text': req_data.text,
             'attachments': [
                 {
+                    'response_type': 'in_channel',
                     'text': req_data.text,
                     'fallback': 'fallback',
                     'callback_id': 'callback_id',
