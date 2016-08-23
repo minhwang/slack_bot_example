@@ -44,14 +44,20 @@ class Hello:
         return json.dumps(a)
 
 class Bob:
+    def parse_command_text(text):
+        s = text.split('|')
+        return (s[0].strip(), s[1].strip())
+
     def POST(self):
         req_data = web.input()
+        (title, desc) = self.parse_command_text(req_data.text)
+
         a = {
-            'text': req_data.text,
+            'text': title,
             'attachments': [
                 {
                     'response_type': 'in_channel',
-                    'text': req_data.text,
+                    'text': desc,
                     'fallback': 'fallback',
                     'callback_id': 'callback_id',
                     'color': '#3AA3E3',
