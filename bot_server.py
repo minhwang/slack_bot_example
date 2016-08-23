@@ -47,10 +47,10 @@ class Bob:
     def POST(self):
         req_data = web.input()
         a = {
-            'text': '생일 축하 파티',
+            'text': req_data.text,
             'attachments': [
                 {
-                    'text': '생일축하합니다~ 밥 먹으러 갑시다~~',
+                    'text': req_data.text,
                     'fallback': 'fallback',
                     'callback_id': 'callback_id',
                     'color': '#3AA3E3',
@@ -58,7 +58,7 @@ class Bob:
                     'actions': [
                         {
                             'name': 'Join',
-                            'text': '당근 가야지~',
+                            'text': 'JOIN',
                             'type': 'button',
                             'value': 'join'
                         }
